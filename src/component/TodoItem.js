@@ -4,7 +4,7 @@ function TodoItem ({id, content, isDone, createDate}) {
     return (
         <div className="TodoItem">
             <div className="checkbox_col">
-                <input type="checkbox"/>
+                <input type="checkbox" checked={isDone} />
             </div>
             <div className="title_col">{content}</div>
             <div className="date_dol">{new Date(createDate).toDateString()}</div>
