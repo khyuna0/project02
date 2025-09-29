@@ -31,7 +31,7 @@ function TodoEditor ({onCreate}) {
         <div className="TodoEditor">
             <h4>새로운 TODO 작성하기 ✍️</h4>
             <div className="editor_wrapper">
-                <input ref={inputRef} value={content} onKeyDown={onkeydown} onChange={onChangeContent} placeholder="새로운 TODO..." />
+                <input ref={inputRef} value={content} onKeyDown={onKeyDown} onChange={onChangeContent} placeholder="새로운 TODO..." />
                 <button onClick={onSubmit}>추가</button>
             </div>
         </div>
