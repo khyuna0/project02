@@ -1,21 +1,26 @@
-import "./TodoItem.css";
+import "./TodoItem.css"
 
-function TodoItem ({id, content, isDone, createDate, onUpdate}) {
+function TodoItem({id, content, isDone, createDate, onUpdate, onDelete}) {
 
-    function onChangeCheckBox () {
+    function onChangeCheckbox() {
         onUpdate(id);
-        console.log(isDone);
-        
+        console.log(isDone)
+    }
+
+    function onClickDelete() {
+        onDelete(id);
     }
 
     return (
         <div className="TodoItem">
             <div className="checkbox_col">
-                <input type="checkbox" onChange={onChangeCheckBox} checked={isDone}/>
+                <input type="checkbox" onChange={onChangeCheckbox} checked={isDone} />
             </div>
             <div className="title_col">{content}</div>
-            <div className="date_dol">{new Date(createDate).toDateString()}</div>
-            <div className="btn_col"><button>삭제</button></div>
+            <div className="date_col">{new Date(createDate).toDateString()}</div>
+            <div className="btn_col">
+                <button onClick={onClickDelete}>삭제</button>
+            </div>
         </div>
     );
 }

@@ -42,28 +42,31 @@ function App() {
     setTodo([newItem, ...todo]); 
   }
 
-  function onUpdate (targetId) {
-    setTodo (
-    todo.map((item) => {
+  const onUpdate = (targetId) => { 
+    setTodo(
+      todo.map((it) => { 
+        if (it.id === targetId) {
+          return {
+            ...it,
+            isDone: !it.isDone,
+          };
+        } else {
+          return it;
+        }
+      })
+    );
+  };
 
-        // 할일 아이템을 반복하다 들어온 targetId와 현재 읽고 있는 할일 아이템의 
-        // id와 일치하면 참
-      if (item.id === targetId ) { 
-        return {
-          ...item, isDone: !item.isDone
-        };
-      } else {
-        return item;
-      }
-    })
-  );
+  function onDelete(targetId) {
+    setTodo (todo.filter((item) => item.id !== targetId));
+    // 삭제를 클릭한 id 아이템을 제외한 나머지 할일 리스트를 저장
   }
 
   return (
     <div className="App">
       <Header />
       <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate}/>
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
     </div>
   );
 }
